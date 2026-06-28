@@ -17,35 +17,6 @@
 
 ---
 
-## 📖 Table of Contents
-
-1. [Project Overview](#-project-overview)
-2. [Project Description](#-project-description)
-3. [Features](#-features)
-4. [Technologies Used](#-technologies-used)
-5. [Project Structure](#-project-structure)
-6. [Installation Guide](#-installation-guide)
-7. [How to Run the Project](#-how-to-run-the-project)
-8. [Working Principle](#-working-principle)
-9. [Chatbot Architecture](#-chatbot-architecture)
-10. [NLP Concepts Used](#-nlp-concepts-used)
-11. [Rule-Based Response System Explanation](#-rule-based-response-system-explanation)
-12. [Example Conversation](#-example-conversation)
-13. [Screenshots](#-screenshots)
-14. [Code Structure Explanation](#-code-structure-explanation)
-15. [Future Improvements](#-future-improvements)
-16. [Learning Outcomes](#-learning-outcomes)
-17. [Applications](#-applications)
-18. [Advantages](#-advantages)
-19. [Limitations](#-limitations)
-20. [Skills Demonstrated](#-skills-demonstrated)
-21. [Resume-Worthy Project Description](#-resume-worthy-project-description)
-22. [GitHub Topics / Tags](#-github-topics--tags)
-23. [Author](#-author)
-24. [License](#-license)
-
----
-
 ## 🧭 Project Overview
 
 **Rule-Based Chatbot with Predefined Responses** is a lightweight, fully offline conversational agent built entirely with core Python. It simulates human-like dialogue by mapping user input to a curated set of **rules** — keyword patterns paired with appropriate responses — rather than relying on trained machine learning models or third-party AI APIs.
@@ -311,23 +282,6 @@ PyBot: You're welcome!
 You: bye
 PyBot: Goodbye! Have a great day ahead.
 ```
-
----
-
-## 🖼️ Screenshots
-
-> Add your own screenshots to the `screenshots/` folder and reference them below.
-
-| Console Version | GUI Version |
-|---|---|
-| `screenshots/console_demo.png` | `screenshots/gui_demo.png` |
-| *(Terminal conversation in progress)* | *(Dark-themed chat window with live conversation)* |
-
-```markdown
-![Console Demo](screenshots/console_demo.png)
-![GUI Demo](screenshots/gui_demo.png)
-```
-
 ---
 
 ## 🧱 Code Structure Explanation
@@ -416,66 +370,5 @@ This rule-based approach — while simple — directly mirrors techniques used i
 
 ---
 
-## 📄 Resume-Worthy Project Description
-
-> **ATS-Friendly Bullet Points:**
-
-- Engineered a rule-based conversational chatbot in **Python**, implementing keyword/pattern-matching algorithms and conditional decision logic to process and respond to natural language user input without relying on machine learning models or external APIs.
-- Architected a modular, decoupled system separating core business logic from presentation, enabling a single rule engine to power both a **command-line interface** and a **Tkinter-based GUI application**, improving code reusability and maintainability.
-- Designed an extensible, dictionary-driven rule schema supporting dynamic response generation, graceful fallback handling for unrecognized input, and real-time date/time computation, demonstrating strong fundamentals in **data structures**, **NLP preprocessing concepts**, and **software design principles**.
-
----
-
-## 🏷️ GitHub Topics / Tags
-
-```
-python  chatbot  rule-based-chatbot  nlp  natural-language-processing
-artificial-intelligence  tkinter  tkinter-gui  conversational-ai
-beginner-project  python-project  keyword-matching  pattern-matching
-console-application  gui-application  open-source  student-project
-```
-
----
-
-## 👤 Author
-
-**Your Name**
-🎓 B.Tech CSE (AI) Student | Aspiring Software/AI Engineer
-
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/<your-username>)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/<your-profile>)
-
-> Feel free to fork this repository, raise issues, or submit pull requests — contributions and feedback are always welcome! ⭐ If you found this project useful, consider giving it a star.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** — you are free to use, modify, and distribute it for personal, academic, or commercial purposes.
-
-```
-MIT License
-
-Copyright (c) 2026 <Your Name>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-```
-
----
-
 <div align="center">
-
-**Built with 🐍 Python and ❤️ for learning, portfolios, and open-source.**
-
 </div>
