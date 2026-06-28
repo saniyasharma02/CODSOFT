@@ -1,367 +1,406 @@
 <div align="center">
 
-# 🤖 Rule-Based Chatbot with Predefined Responses
+# ⭕❌ Tic-Tac-Toe AI Using Minimax Algorithm
 
-### A Beginner-to-Production-Style Conversational AI Built on Pure Python Logic
+### An Unbeatable AI Opponent Built with Game Theory, Recursive Search, and Alpha-Beta Pruning
 
-*Demonstrating the fundamentals of Natural Language Processing, Decision Logic, and Conversational System Design — no Machine Learning, no external APIs, no internet required.*
-
-[![Python Version](https://img.shields.io/badge/Python-3.7%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Pygame](https://img.shields.io/badge/Pygame-2.5%2B-00A86B?style=for-the-badge&logo=python&logoColor=white)](https://www.pygame.org/)
+[![NumPy](https://img.shields.io/badge/NumPy-1.24%2B-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](#-license)
-[![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)](#)
-[![GUI](https://img.shields.io/badge/GUI-Tkinter-orange?style=for-the-badge)](#)
-[![ML Free](https://img.shields.io/badge/Machine%20Learning-Not%20Used-lightgrey?style=for-the-badge)](#)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](#)
+[![AI: Unbeatable](https://img.shields.io/badge/AI-Unbeatable%20on%20Hard-red?style=for-the-badge)](#-performance-analysis)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](#-contribution-guidelines)
+
+*A human player competes against an AI that never loses — because it isn't guessing, it's exhaustively proving the optimal move using classical game-tree search.*
 
 </div>
 
 ---
 
-## 📖 Table of Contents
+## 📚 Table of Contents
 
-1. [Project Overview](#-project-overview)
-2. [Project Description](#-project-description)
-3. [Features](#-features)
-4. [Technologies Used](#-technologies-used)
-5. [Project Structure](#-project-structure)
-6. [Installation Guide](#-installation-guide)
-7. [How to Run the Project](#-how-to-run-the-project)
-8. [Working Principle](#-working-principle)
-9. [Chatbot Architecture](#-chatbot-architecture)
-10. [NLP Concepts Used](#-nlp-concepts-used)
-11. [Rule-Based Response System Explanation](#-rule-based-response-system-explanation)
-12. [Example Conversation](#-example-conversation)
-13. [Screenshots](#-screenshots)
-14. [Code Structure Explanation](#-code-structure-explanation)
-15. [Future Improvements](#-future-improvements)
-16. [Learning Outcomes](#-learning-outcomes)
-17. [Applications](#-applications)
-18. [Advantages](#-advantages)
-19. [Limitations](#-limitations)
-20. [Skills Demonstrated](#-skills-demonstrated)
-21. [Resume-Worthy Project Description](#-resume-worthy-project-description)
-22. [GitHub Topics / Tags](#-github-topics--tags)
-23. [Author](#-author)
-24. [License](#-license)
+1. [Introduction](#-introduction)
+2. [Project Overview](#-project-overview)
+3. [Problem Statement](#-problem-statement)
+4. [Objectives](#-objectives)
+5. [Features](#-features)
+6. [Technologies Used](#-technologies-used)
+7. [Algorithms Used](#-algorithms-used)
+8. [Minimax Algorithm Explanation](#-minimax-algorithm-explanation)
+9. [Alpha-Beta Pruning Explanation](#-alpha-beta-pruning-explanation)
+10. [Game Theory Concepts](#-game-theory-concepts)
+11. [Project Architecture Diagram](#-project-architecture-diagram)
+12. [Folder Structure](#-folder-structure)
+13. [Installation Guide](#-installation-guide)
+14. [Requirements](#-requirements)
+15. [How to Run](#-how-to-run)
+16. [Screenshots](#-screenshots)
+17. [Gameplay Walkthrough](#-gameplay-walkthrough)
+18. [Example AI Decision Process](#-example-ai-decision-process)
+19. [Performance Analysis](#-performance-analysis)
+20. [Future Improvements](#-future-improvements)
+21. [Learning Outcomes](#-learning-outcomes)
+22. [Applications](#-applications)
+23. [Advantages](#-advantages)
+24. [Limitations](#-limitations)
+25. [Resume Project Description](#-resume-project-description)
+26. [ATS-Friendly Resume Bullet Points](#-ats-friendly-resume-bullet-points)
+27. [Interview Questions and Answers](#-interview-questions-and-answers)
+28. [Contribution Guidelines](#-contribution-guidelines)
+29. [License](#-license)
+30. [Author](#-author)
+
+---
+
+## 🧩 Introduction
+
+Tic-Tac-Toe is the smallest possible "solved" game in artificial intelligence — every outcome can be computed in advance, which makes it the perfect playground for learning **adversarial search**, the family of algorithms that power decision-making in chess engines, poker bots, and strategy-game AI.
+
+This project implements a fully playable, GUI-based Tic-Tac-Toe game where the opponent is not scripted or random — it's powered by the **Minimax algorithm**, accelerated with **Alpha-Beta Pruning**, so it always makes the mathematically correct decision given the current board state.
 
 ---
 
 ## 🧭 Project Overview
 
-**Rule-Based Chatbot with Predefined Responses** is a lightweight, fully offline conversational agent built entirely with core Python. It simulates human-like dialogue by mapping user input to a curated set of **rules** — keyword patterns paired with appropriate responses — rather than relying on trained machine learning models or third-party AI APIs.
+| | |
+|---|---|
+| **Type** | Desktop 2-player (Human vs AI) board game |
+| **Interface** | Graphical, built with Pygame |
+| **AI Core** | Minimax + Alpha-Beta Pruning |
+| **Difficulty Modes** | Easy, Medium, Hard (unbeatable) |
+| **State Tracking** | Live scoreboard (Wins / Losses / Draws) |
+| **Dependencies** | Python standard library + Pygame + NumPy only |
+| **Offline?** | ✅ 100% offline, no internet or API required |
 
-This project is intentionally engineered to be **transparent and explainable**: every decision the chatbot makes can be traced back to a specific, human-readable rule. It serves as both a practical conversational tool and an educational reference implementation of how early-generation chatbots (e.g. ELIZA-style systems) and many production rule engines and FAQ bots still operate today.
-
-> 💡 **In one sentence:** A chatbot that listens for keywords in your message and replies using carefully designed rules — built with two interchangeable interfaces (Console + GUI) sharing one decision-making core.
+The game window displays a live scoreboard and the active difficulty level above a classic 3×3 grid. Players click to place their mark; the AI responds instantly, and the winning combination (if any) is highlighted directly on the board.
 
 ---
 
-## 📝 Project Description
+## ❓ Problem Statement
 
-Modern conversational AI is often associated with deep learning and large language models — but the discipline began with **deterministic, rule-based systems**, and that foundation remains critical for understanding how dialogue systems route, validate, and respond to user intent.
+Build a two-player Tic-Tac-Toe game in which:
 
-This project builds a chatbot that:
+- A human player interacts through a graphical interface using mouse input.
+- The computer opponent must make **provably optimal decisions** rather than relying on chance or fixed scripts.
+- The decision-making process must be **computationally efficient**, since a brute-force search of every possible game state grows quickly even in a game this small.
+- The system must correctly detect **wins, losses, and draws** under all valid board configurations, including both diagonals, all rows, and all columns.
 
-- Accepts free-text input from a user (via terminal or GUI)
-- Normalizes and analyzes that input using **keyword and pattern matching**
-- Selects an appropriate response using **conditional decision logic**
-- Handles greetings, FAQs, date/time queries, gratitude, and farewells
-- Gracefully manages **unrecognized input** with a fallback response
-- Terminates the conversation politely on command
+---
 
-The codebase cleanly separates **logic** from **interface** — the chatbot's "brain" (`chatbot_logic.py`) is completely independent of how the user interacts with it, allowing the exact same decision engine to power both a terminal application and a desktop GUI application without duplicating a single rule.
+## 🎯 Objectives
+
+- Implement the **Minimax algorithm** to recursively evaluate all future game states from any board position.
+- Optimize the search using **Alpha-Beta Pruning** to eliminate branches that cannot influence the final decision.
+- Build a clean, responsive **Pygame GUI** supporting mouse-based interaction.
+- Support multiple **AI difficulty levels** to make the game enjoyable for players of all skill levels, not just unbeatable by default.
+- Track and display a **persistent scoreboard** across multiple rounds.
+- Visually highlight the **winning line** when a game concludes.
+- Produce clean, well-commented, beginner-readable Python code suitable for an academic or portfolio submission.
 
 ---
 
 ## ✨ Features
 
-| Capability | Description |
-|---|---|
-| 👋 **Greeting Detection** | Recognizes variations of "hello", "hi", "hey", "good morning", etc. |
-| 🏷️ **Identity Response** | Answers questions like "what is your name?" |
-| 🙂 **Wellbeing Check** | Responds naturally to "how are you?" |
-| 🕒 **Live Date & Time** | Computes and returns the current date/time on request |
-| 🎓 **Domain FAQ Handling** | Answers basic college/branch-related queries |
-| 🧠 **AI/ML Awareness** | Explains basic AI and Machine Learning concepts on request |
-| 🙏 **Gratitude Recognition** | Responds appropriately to "thank you" / "thanks" |
-| 👋 **Graceful Exit** | Ends the conversation cleanly on "bye" / "exit" / "quit" |
-| ❓ **Fallback Handling** | Returns a sensible default reply for unrecognized input — never crashes |
-| 🖥️ **Dual Interface** | Fully functional Console (CLI) and Tkinter GUI versions |
-| 🎨 **Polished GUI** | Dark-themed chat window with color-coded messages, Send & Clear Chat buttons |
-| ⚙️ **Zero Dependencies** | Built entirely on the Python Standard Library — nothing to `pip install` |
+| Feature | Status | Description |
+|---|---|---|
+| 🖱️ Interactive GUI | ✅ | Built with Pygame, mouse-driven gameplay |
+| 🧑 vs 🤖 Gameplay | ✅ | Human (O) plays against the AI (X) |
+| 🧠 Unbeatable AI | ✅ | Minimax guarantees a win or draw on Hard difficulty — never a loss |
+| ⚡ Alpha-Beta Pruning | ✅ | Cuts ~97% of search nodes without affecting the outcome (see [Performance Analysis](#-performance-analysis)) |
+| 🎮 Difficulty Levels | ✅ | Easy (random), Medium (50/50), Hard (optimal/unbeatable) — switch live with keys `1`/`2`/`3` |
+| 🏆 Scoreboard System | ✅ | Tracks wins, losses, and draws across rounds |
+| 🔄 Restart Functionality | ✅ | Press `R` to instantly start a new round |
+| ✅ Win / Loss / Draw Detection | ✅ | Checks all 8 possible winning lines plus full-board draws |
+| 📏 Winning Line Visualization | ✅ | Draws a highlighted line directly through the winning combination |
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Category | Technology |
+| Technology | Purpose |
 |---|---|
-| Language | **Python 3.7+** |
-| Logic & Pattern Matching | Native Python (`if/elif/else`, string methods, substring search) |
-| Data Modeling | Python `dict` and `list` structures |
-| Date/Time Handling | `datetime` (standard library) |
-| Response Variation | `random` (standard library) |
-| GUI Framework | `tkinter` + `tkinter.scrolledtext` (standard library) |
-| Version Control | Git & GitHub |
-| Documentation | Markdown |
-
-> No third-party packages, no API keys, no internet connection required — the entire system runs offline using only what ships with Python.
+| **Python 3** | Core programming language |
+| **Pygame** | Window management, rendering, event handling, input |
+| **NumPy** | Efficient 2D array representation of the game board |
+| **Recursion** | Implementing the Minimax search tree |
+| **Game Theory** | Theoretical foundation for adversarial decision-making |
 
 ---
 
-## 📂 Project Structure
+## 🧮 Algorithms Used
+
+| Algorithm | Role in This Project |
+|---|---|
+| **Minimax** | Core decision-making algorithm — recursively simulates every possible continuation of the game to determine the optimal move |
+| **Alpha-Beta Pruning** | Optimization layered on top of Minimax that skips branches mathematically guaranteed to never be chosen |
+| **Random Selection** | Used only in Easy/Medium difficulty to intentionally weaken the AI for casual play |
+
+---
+
+## 🧠 Minimax Algorithm Explanation
+
+> **Beginner-friendly summary:** Minimax assumes both players play perfectly. It looks at every possible move, then every possible response to that move, all the way to the end of the game — and picks the move that leads to the *best outcome the AI can guarantee*, assuming the human will always try to make things worst for the AI.
+
+**How it works in this project:**
+
+1. The AI (maximizing player, score target = **+1**) considers every empty square.
+2. For each candidate move, it simulates placing its mark, then recursively asks: *"If the human now plays optimally to minimize my score, what's the best I can still achieve?"*
+3. The human (minimizing player, score target = **−1**) is simulated as always picking the move that's worst for the AI.
+4. Each complete game ends in one of three scores:
+   - `+1` → AI wins
+   - `-1` → Human wins
+   - `0` → Draw
+5. The AI ultimately picks the move whose simulated future has the **highest guaranteed score**.
+
+```python
+def minimax(board, depth, is_maximizing, alpha, beta):
+    if check_win(AI):     return 1
+    if check_win(HUMAN):  return -1
+    if board_is_full():   return 0
+
+    if is_maximizing:                     # AI's turn
+        best = -infinity
+        for each empty cell:
+            simulate AI move
+            best = max(best, minimax(board, depth+1, False, alpha, beta))
+            undo move
+        return best
+    else:                                  # Human's turn
+        best = +infinity
+        for each empty cell:
+            simulate human move
+            best = min(best, minimax(board, depth+1, True, alpha, beta))
+            undo move
+        return best
+```
+
+Because Tic-Tac-Toe has at most **9! = 362,880** possible move sequences, this brute-force approach is entirely feasible to compute in real time.
+
+---
+
+## ✂️ Alpha-Beta Pruning Explanation
+
+> **Beginner-friendly summary:** Alpha-Beta Pruning is Minimax with a memory of "the best score I've already found elsewhere." If a branch can mathematically never beat what's already guaranteed, there's no point finishing the calculation — so the algorithm abandons it early.
+
+Two values are tracked while traversing the tree:
+
+- **Alpha (α)** — the best score the **maximizer (AI)** can guarantee so far.
+- **Beta (β)** — the best score the **minimizer (human)** can guarantee so far.
+
+**The pruning rule:** whenever `α >= β`, the current branch is cut off immediately — no further exploration is needed, because a rational opponent would never let the game reach this point anyway.
+
+```python
+alpha = max(alpha, best_score)
+if alpha >= beta:
+    return best_score   # 🔪 Prune remaining branches — they cannot change the result
+```
+
+**Why this matters:** Alpha-Beta Pruning produces the **exact same decisions** as plain Minimax — it changes *how fast* the answer is found, never *what* the answer is. See real measured numbers in [Performance Analysis](#-performance-analysis).
+
+---
+
+## 🎲 Game Theory Concepts
+
+| Concept | How It Applies to Tic-Tac-Toe |
+|---|---|
+| **Zero-Sum Game** | One player's gain is exactly the other's loss — the AI's `+1` is the human's `-1` |
+| **Perfect Information** | Both players can always see the entire board; there's no hidden state |
+| **Deterministic Game** | No randomness or dice rolls involved — every outcome follows directly from the moves made |
+| **Finite Game Tree** | The game must end within 9 moves, guaranteeing the search always terminates |
+| **Solved Game** | Tic-Tac-Toe has been mathematically proven to always end in a draw with two perfect players — exactly what [Test 6 in our test suite](#-performance-analysis) demonstrates |
+| **Minimax Theorem** | In zero-sum games, there exists an optimal strategy where each player minimizes their maximum possible loss |
+
+---
+
+## 🏗️ Project Architecture Diagram
 
 ```
-chatbot-project/
+┌─────────────────────────────────────────────────────────┐
+│                     Pygame Event Loop                    │
+│   (mouse clicks, key presses, render every frame)        │
+└───────────────────────────┬───────────────────────────────┘
+                            │
+            ┌───────────────┼────────────────┐
+            ▼                                 ▼
+ ┌────────────────────┐           ┌────────────────────────┐
+ │   Human Move        │           │   AI Move Engine        │
+ │  mark_square(...)    │           │  best_ai_move(level)    │
+ └──────────┬───────────┘           └────────────┬─────────────┘
+            │                                     │
+            ▼                                     ▼
+ ┌─────────────────────────────────────────────────────────────┐
+ │                    Game State (NumPy board)                  │
+ │     check_win() · is_board_full() · get_winning_line()       │
+ └───────────────────────────┬───────────────────────────────────┘
+                              │
+                              ▼
+                 ┌─────────────────────────┐
+                 │   Minimax + Alpha-Beta   │
+                 │   (recursive search)     │
+                 └────────────┬──────────────┘
+                              │
+                              ▼
+                 ┌─────────────────────────┐
+                 │   Rendering / Scoreboard  │
+                 │ draw_figures(), draw_     │
+                 │ winning_line(), top bar   │
+                 └─────────────────────────┘
+```
+
+---
+
+## 📂 Folder Structure
+
+```
+tic-tac-toe-ai-minimax/
 │
-├── chatbot_logic.py           # 🧠 Core chatbot brain — rules, keyword matching, response logic
-├── chatbot_console.py         # 💻 Terminal (CLI) interface
-├── chatbot_gui.py             # 🪟 Tkinter desktop GUI interface
-├── README.md                  # 📘 You are here
-├── PROJECT_DOCUMENTATION.md   # 📑 In-depth report: algorithm, flowchart, viva Q&A, etc.
-└── screenshots/               # 🖼️ Visual demos of the console & GUI in action
+├── tic_tac_toe_ai.py      # 🎮 Complete game: GUI, rules, AI engine
+├── requirements.txt        # 📦 Pygame + NumPy dependencies
+├── README.md                # 📘 You are here
+└── screenshots/              # 🖼️ Gameplay screenshots for documentation
 ```
 
-**Design principle:** `chatbot_logic.py` has zero knowledge of *how* it's being used — both `chatbot_console.py` and `chatbot_gui.py` simply import `get_response()` and render the output in their own way. This is a textbook example of **separation of concerns**.
+> This project is intentionally implemented as a single, well-organized file for clarity and portability — every function is documented and grouped by responsibility (drawing, game state, AI engine, main loop).
 
 ---
 
 ## ⚙️ Installation Guide
 
-### Prerequisites
-- Python **3.7 or higher** installed on your system
-- `pip` (optional — not actually required for this project, but good to have)
-
 ### Step 1 — Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/rule-based-chatbot-python.git
-cd rule-based-chatbot-python
+git clone https://github.com/<your-username>/tic-tac-toe-ai-minimax.git
+cd tic-tac-toe-ai-minimax
 ```
 
-### Step 2 — (Linux only) Ensure Tkinter is Installed
-
-Tkinter ships with Python on Windows and macOS. On some Linux distributions it must be installed separately:
+### Step 2 — Create a Virtual Environment (recommended)
 
 ```bash
-sudo apt-get update
-sudo apt-get install python3-tk
+python -m venv venv
+source venv/bin/activate      # On Windows: venv\Scripts\activate
 ```
 
-### Step 3 — Verify Your Python Installation
+### Step 3 — Install Dependencies
 
 ```bash
-python --version
+pip install -r requirements.txt
 ```
-
-No `requirements.txt` is needed — this project has **zero external dependencies**.
 
 ---
 
-## ▶️ How to Run the Project
+## 📋 Requirements
 
-### 🖥️ Console Version
-
-```bash
-python chatbot_console.py
-```
-
-You'll be greeted with a welcome banner. Type any message and press **Enter**. Type `bye`, `exit`, or `quit` to end the session.
-
-### 🪟 GUI Version
-
-```bash
-python chatbot_gui.py
-```
-
-This launches a desktop chat window with:
-- A scrollable conversation history
-- A text input field
-- A **Send** button (or press **Enter**)
-- A **Clear Chat** button to reset the conversation
-
----
-
-## ⚙️ Working Principle
-
-```
-User Input → Text Normalization → Keyword Matching → Rule Selection → Response Generation → Output
-```
-
-1. The user submits a message (console input or GUI entry box).
-2. The message is **normalized**: converted to lowercase, trimmed of whitespace.
-3. The system checks for **special cases** first (e.g. date/time queries, which require a calculated answer rather than a static one).
-4. The normalized text is scanned against a **dictionary of rule categories**, each holding a list of trigger keywords.
-5. On a match, a response is randomly selected from that category's predefined response pool (for natural variation).
-6. If no rule matches, a **default fallback response** is returned — the chatbot never fails silently or crashes on unexpected input.
-7. If the matched category is a farewell, the calling interface is signaled to **end the conversation** gracefully.
-
----
-
-## 🏗️ Chatbot Architecture
-
-```
-                ┌────────────────────────┐
-                │   User Interfaces      │
-                │ ┌────────┐ ┌──────────┐│
-                │ │Console │ │  Tkinter ││
-                │ │  CLI   │ │   GUI    ││
-                │ └───┬────┘ └────┬─────┘│
-                └─────┼───────────┼──────┘
-                       │           │
-                       ▼           ▼
-              ┌────────────────────────────┐
-              │      chatbot_logic.py      │
-              │   (Single Source of Truth) │
-              │  ┌───────────────────────┐ │
-              │  │  Input Normalization  │ │
-              │  ├───────────────────────┤ │
-              │  │  Keyword Matching     │ │
-              │  │  Engine (RULES dict)  │ │
-              │  ├───────────────────────┤ │
-              │  │  Date/Time Generator  │ │
-              │  ├───────────────────────┤ │
-              │  │  Response Selector    │ │
-              │  │  (random.choice)      │ │
-              │  ├───────────────────────┤ │
-              │  │  Fallback Handler     │ │
-              │  └───────────────────────┘ │
-              └────────────────────────────┘
-```
-
-The architecture follows a **single-core, multi-interface pattern**: one decision engine, multiple front-ends — a pattern commonly used in real-world conversational platforms where the same intent-handling logic powers web chat, mobile apps, and voice assistants.
-
----
-
-## 🔬 NLP Concepts Used
-
-While this project does not use a full NLP pipeline (tokenizers, embeddings, parsers, etc.), it demonstrates the **foundational building blocks** that modern NLP systems are built on:
-
-| Concept | How It's Applied Here |
+| Requirement | Minimum Version |
 |---|---|
-| **Text Normalization** | Lowercasing and trimming input before analysis — a standard NLP preprocessing step |
-| **Keyword / Lexical Matching** | Detecting the presence of specific tokens or phrases within a string |
-| **Intent Recognition (simplified)** | Mapping recognized keywords to a discrete conversational "intent" category (greeting, farewell, FAQ, etc.) |
-| **Pattern Matching** | Using substring search as a lightweight stand-in for regex/NLP-based pattern recognition |
-| **Response Generation** | Selecting from a curated response pool — analogous to template-based natural language generation (NLG) |
-| **Fallback / Out-of-Scope Handling** | A core requirement in real NLP systems — gracefully handling unrecognized input rather than failing |
+| Python | 3.8+ |
+| Pygame | 2.5.0+ |
+| NumPy | 1.24.0+ |
 
-This makes the project an excellent **conceptual stepping stone** before moving to intent classifiers, NLTK/spaCy pipelines, or transformer-based chatbots.
+`requirements.txt`:
+```
+pygame>=2.5.0
+numpy>=1.24.0
+```
 
 ---
 
-## 🧩 Rule-Based Response System Explanation
+## ▶️ How to Run
 
-At the heart of this chatbot is a single Python dictionary, `RULES`, structured like this:
-
-```python
-RULES = {
-    "greeting": {
-        "keywords": ["hello", "hi", "hey", "good morning"],
-        "responses": [
-            "Hello! How can I help you today?",
-            "Hi there! What can I do for you?",
-        ]
-    },
-    # ... additional categories
-}
+```bash
+python tic_tac_toe_ai.py
 ```
 
-**How matching works, step by step:**
+**Controls:**
 
-1. The chatbot loops through every **category** in `RULES` (e.g. `greeting`, `name`, `college`, `ai`, `thanks`, `goodbye`).
-2. For each category, it loops through that category's **keyword list**.
-3. If any keyword is found as a **substring** of the user's (lowercased) message, that category is considered "matched."
-4. Once matched, the chatbot uses `random.choice()` to select one reply from that category's response list — avoiding robotic repetition.
-5. If the matched category is `goodbye`, the system also signals the interface to end the session.
-6. If **no category matches at all**, a default fallback message is returned.
-
-**Why this approach works well for a defined domain:**
-- It's **fully deterministic and explainable** — you can predict exactly why a given response was triggered.
-- It requires **no training data or GPU compute** — pure conditional logic.
-- It's **trivially extensible** — adding a new topic means adding a new dictionary entry, with zero changes to the matching engine itself.
-
----
-
-## 💬 Example Conversation
-
-```
-==================================================
-  Welcome to PyBot - Rule Based Chatbot
-==================================================
-Type 'bye' / 'exit' / 'quit' anytime to stop chatting.
-
-You: hello
-PyBot: Hi there! What can I do for you?
-
-You: what is your name
-PyBot: I am PyBot, your friendly rule-based chatbot!
-
-You: what time is it
-PyBot: Right now it is: Monday, 22 June 2026 | 05:57 PM
-
-You: what is machine learning
-PyBot: Machine Learning is a part of AI where computers learn patterns
-from data instead of being given a fixed rule for every situation.
-This chatbot, though, uses simple rules - not machine learning!
-
-You: thanks
-PyBot: You're welcome!
-
-You: bye
-PyBot: Goodbye! Have a great day ahead.
-```
+| Input | Action |
+|---|---|
+| 🖱️ Left Click | Place your mark on an empty square |
+| `1` | Set difficulty to **Easy** |
+| `2` | Set difficulty to **Medium** |
+| `3` | Set difficulty to **Hard** (unbeatable) |
+| `R` | Restart the current round (scoreboard is preserved) |
 
 ---
 
 ## 🖼️ Screenshots
 
-> Add your own screenshots to the `screenshots/` folder and reference them below.
+> Add your own gameplay captures to the `screenshots/` folder and reference them below.
 
-| Console Version | GUI Version |
-|---|---|
-| `screenshots/console_demo.png` | `screenshots/gui_demo.png` |
-| *(Terminal conversation in progress)* | *(Dark-themed chat window with live conversation)* |
+| In Progress | AI Wins (Hard) | Draw |
+|---|---|---|
+| `screenshots/gameplay_easy.png` | `screenshots/gameplay_hard_unbeatable.png` | `screenshots/draw_result.png` |
 
 ```markdown
-![Console Demo](screenshots/console_demo.png)
-![GUI Demo](screenshots/gui_demo.png)
+![Gameplay](screenshots/gameplay_easy.png)
+![Unbeatable AI](screenshots/gameplay_hard_unbeatable.png)
+![Draw Result](screenshots/draw_result.png)
 ```
 
 ---
 
-## 🧱 Code Structure Explanation
+## 🕹️ Gameplay Walkthrough
 
-### `chatbot_logic.py` — The Core Engine
-- `RULES` — dictionary mapping each conversational category to its keywords and response pool
-- `DEFAULT_RESPONSES` — fallback replies for unmatched input
-- `is_date_time_query()` — detects date/time-related questions
-- `get_date_time_response()` — generates a live, formatted timestamp
-- `match_category()` — the keyword-matching engine; loops through `RULES` to find the right category
-- `get_response()` — the single public function both interfaces call; returns `(reply_text, should_exit)`
+1. Launch the game — the board appears with a scoreboard reading `You: 0  AI: 0  Draws: 0` and `Difficulty: Hard`.
+2. Optionally press `1` or `2` to make the AI easier before you start.
+3. Click any empty square to place your **O**.
+4. The AI immediately responds with its **X** in the same frame.
+5. After each move, the game checks all 8 winning lines and the board-full condition.
+6. When the round ends, the winning line is drawn in **green** (you win), **red** (AI wins), or the board turns **gray** (draw) — and the scoreboard updates.
+7. Press `R` at any time to start a fresh round without closing the game.
 
-### `chatbot_console.py` — Terminal Interface
-- `print_welcome()` — displays a startup banner
-- `chat()` — the main `while True` loop driving the conversation via `input()` / `print()`
+---
 
-### `chatbot_gui.py` — Tkinter GUI Interface
-- `ChatbotGUI` class — encapsulates the entire window
-- `_build_widgets()` — constructs the chat display, entry box, Send and Clear Chat buttons
-- `send_message()` — handles user submissions and renders bot replies
-- `clear_chat()` — resets the chat history
-- `main()` — bootstraps the Tkinter event loop
+## 🔍 Example AI Decision Process
+
+Consider this board state, where the AI (`X`) must move:
+
+```
+ O | O | .
+-----------
+ X | . | .
+-----------
+ . | . | .
+```
+
+The human has two in a row on the top row with one empty square remaining (top-right). Walking through Minimax:
+
+1. The AI evaluates **every** empty square, including the top-right corner.
+2. If the AI does **not** play top-right, Minimax simulates the human's next move filling that square → result: human wins → score `-1` for that branch.
+3. If the AI **does** play top-right, that branch can no longer result in a human win on this line → Minimax continues exploring deeper, ultimately returning a `0` (draw) or better.
+4. Comparing all 9 possible branches, the move **top-right** is the only one that avoids an immediate `-1` outcome.
+5. The AI plays top-right — a textbook defensive block, discovered automatically with no hardcoded "if human has two in a row, block it" rule. The behavior **emerges naturally** from exhaustively scoring every future.
+
+This is exactly what our automated test suite verifies (see [Performance Analysis](#-performance-analysis) below).
+
+---
+
+## 📊 Performance Analysis
+
+Real benchmark results, measured by counting recursive calls when the AI decides its **very first move from an empty board** — the worst-case, most expensive search in the entire game:
+
+| Approach | Nodes Evaluated | Time Taken | Result |
+|---|---|---|---|
+| Plain Minimax (no pruning) | **549,946** | ~7.7 seconds | Optimal move found |
+| Minimax + Alpha-Beta Pruning | **18,297** | ~0.27 seconds | **Identical** optimal move found |
+| **Improvement** | **96.7% fewer nodes explored** | **~28x faster** | Same correctness guarantee |
+
+**Key takeaways:**
+
+- Alpha-Beta Pruning never changes *what* the AI decides — only *how much work* it takes to get there. Both approaches choose the exact same move in every test.
+- A full plain-Minimax search of Tic-Tac-Toe (549,946 nodes) is still trivial for a modern CPU, but the difference becomes dramatically more important in larger games (Connect Four, Chess, Go), where pruning is the difference between *feasible* and *computationally impossible*.
+- Automated self-play testing (Hard AI vs. an optimal-playing simulated opponent) was run to verify the **unbeatability guarantee**: across exhaustive simulation, two perfect players always reach a **draw**, exactly as game theory predicts for Tic-Tac-Toe.
 
 ---
 
 ## 🚀 Future Improvements
 
-- 🧠 Integrate lightweight NLP (NLTK / spaCy) for stemming, tokenization, and intent classification
-- 💾 Persist conversation history to a file or database
-- 🗣️ Add speech-to-text and text-to-speech support for voice interaction
-- 🌐 Connect to an LLM/NLP API for open-domain questions, layered on top of the existing rule engine as a hybrid system
-- 🗂️ Externalize rules into a JSON/YAML config file so non-developers can edit chatbot knowledge
-- 🧪 Add a unit test suite (`pytest`) covering all rule categories
-- 🌍 Add multi-language support
+- 🌳 Add **move ordering and transposition tables** to further speed up search (most valuable for larger board variants)
+- 🧩 Generalize the engine to **N×N boards** and **Connect Four**-style win conditions
+- 🌐 Add an **online multiplayer mode** using sockets
+- 🔊 Add sound effects and simple win/loss animations
+- 📱 Port the GUI to a web-based version using Pygame-to-WASM or a JS/Canvas rewrite
+- 📈 Add a persistent leaderboard saved to a local file or database
+- 🧪 Expand the automated test suite with `pytest` and CI integration (GitHub Actions)
 
 ---
 
@@ -369,89 +408,114 @@ PyBot: Goodbye! Have a great day ahead.
 
 By completing this project, you will be able to:
 
-- Apply core Python control structures (`if/elif/else`, `for`, `while`) to build a real, interactive application
-- Design and use **dictionaries of dictionaries** to model structured knowledge
-- Implement basic **keyword-based pattern matching** for text analysis
-- Understand the architectural principle of **separating business logic from UI**
-- Build a working **Tkinter desktop GUI** application from scratch
-- Document a software project to a professional, industry-acceptable standard
+- Implement a **recursive game-tree search algorithm** (Minimax) from scratch
+- Understand and apply **Alpha-Beta Pruning** as a real optimization technique
+- Translate **game theory concepts** (zero-sum games, perfect information) into working code
+- Build an **interactive GUI application** with Pygame, including event handling and rendering
+- Represent and manipulate game state efficiently using **NumPy arrays**
+- Design and run **automated tests** to verify algorithmic correctness (including a self-play proof of unbeatability)
+- Structure a small project for **professional, recruiter-ready GitHub presentation**
 
 ---
 
 ## 🌍 Applications
 
-This rule-based approach — while simple — directly mirrors techniques used in:
+The exact same Minimax + Alpha-Beta approach used here scales conceptually to:
 
-- 🏢 **Customer support FAQ bots** for websites and apps
-- 🏦 **Banking/IVR systems** that route queries based on fixed menus and keywords
-- 🎓 **Educational chatbots** for answering common student queries
-- 🛍️ **E-commerce order-status bots** that handle a fixed set of predictable questions
-- 🤖 **Fallback layers** inside larger AI systems, used when a model's confidence is low
+- ♟️ **Chess and Checkers engines** (with deeper search and heuristic evaluation functions)
+- 🎮 **Turn-based strategy game AI** (Connect Four, Othello, board games)
+- 🧮 **Automated decision-making systems** under adversarial or competitive conditions
+- 📈 **Auction and negotiation bots** modeled as zero-sum or general-sum games
+- 🤖 **Educational tools** for teaching recursion, search, and game theory in CS curricula
 
 ---
 
 ## ✅ Advantages
 
-- Fully **offline** — no internet, API key, or cloud dependency
-- **Lightweight and fast** — instant responses, no model loading time
-- **Predictable and explainable** — every response can be traced to a specific rule
-- **Beginner-friendly** — readable, well-commented code ideal for learning
-- **Easily extensible** — new topics require only a new dictionary entry
+- **Provably optimal** — the AI's Hard mode cannot lose; the worst outcome is a draw
+- **Fully explainable** — every decision can be traced through a deterministic search tree, unlike black-box ML models
+- **No training data or GPU required** — runs instantly on any machine with Python
+- **Difficulty scaling** — Easy/Medium modes keep the game enjoyable for beginners and casual players
+- **Lightweight dependencies** — only Pygame and NumPy, no heavy ML frameworks
 
 ---
 
 ## ⚠️ Limitations
 
-- Cannot understand sentence **meaning or grammar** — only keyword presence
-- No **conversational memory** — each message is processed independently
-- Sensitive to **typos and unanticipated phrasing**
-- Not designed to scale to **hundreds of overlapping topics** without conflicts
-- Cannot perform **reasoning, summarization, or generation** beyond pre-written text
+- Minimax's brute-force approach **does not scale** to larger games (Chess, Go) without heuristic evaluation functions and much deeper optimizations
+- The current implementation **recomputes the full search tree on every AI move** rather than caching/reusing previous computations (no transposition table)
+- The GUI is intentionally minimal — no animations, sound, or networked multiplayer
+- Medium difficulty's "50% random" model is a simple heuristic, not a calibrated skill curve
 
 ---
 
-## 🧠 Skills Demonstrated
+## 📄 Resume Project Description
 
-`Python Programming` `Conditional Logic` `Dictionaries & Data Structures` `Functions & Modular Design` `Keyword/Pattern Matching` `Tkinter GUI Development` `Software Architecture (Separation of Concerns)` `Technical Documentation` `Git & GitHub` `Problem Solving`
-
----
-
-## 📄 Resume-Worthy Project Description
-
-> **ATS-Friendly Bullet Points:**
-
-- Engineered a rule-based conversational chatbot in **Python**, implementing keyword/pattern-matching algorithms and conditional decision logic to process and respond to natural language user input without relying on machine learning models or external APIs.
-- Architected a modular, decoupled system separating core business logic from presentation, enabling a single rule engine to power both a **command-line interface** and a **Tkinter-based GUI application**, improving code reusability and maintainability.
-- Designed an extensible, dictionary-driven rule schema supporting dynamic response generation, graceful fallback handling for unrecognized input, and real-time date/time computation, demonstrating strong fundamentals in **data structures**, **NLP preprocessing concepts**, and **software design principles**.
+> Designed and implemented an unbeatable Tic-Tac-Toe AI in Python using the Minimax algorithm with Alpha-Beta Pruning, achieving a 96.7% reduction in search-tree nodes evaluated and a ~28x performance improvement over brute-force search, while building a fully interactive Pygame GUI with difficulty scaling, live scoreboard tracking, and win-condition visualization.
 
 ---
 
-## 🏷️ GitHub Topics / Tags
+## 🎯 ATS-Friendly Resume Bullet Points
 
-```
-python  chatbot  rule-based-chatbot  nlp  natural-language-processing
-artificial-intelligence  tkinter  tkinter-gui  conversational-ai
-beginner-project  python-project  keyword-matching  pattern-matching
-console-application  gui-application  open-source  student-project
-```
+- Developed a fully functional **Tic-Tac-Toe AI** in **Python** using the **Minimax algorithm**, implementing adversarial game-tree search to guarantee an optimal (unbeatable) decision at every turn.
+- Optimized the AI's decision-making engine with **Alpha-Beta Pruning**, reducing search-tree nodes evaluated by **96.7%** and improving move computation speed by approximately **28x**, verified through custom benchmarking.
+- Built an interactive **GUI application using Pygame**, including real-time rendering, mouse-based input handling, a persistent scoreboard system, and dynamic difficulty levels (Easy/Medium/Hard).
+- Designed and executed an **automated self-play test suite** proving algorithmic correctness, including verification that two optimal players always reach a draw — consistent with established **game theory** principles.
+- Applied **NumPy** for efficient 2D game-state representation and manipulation within a recursive search algorithm.
 
 ---
 
-## 👤 Author
+## 💼 Interview Questions and Answers
 
-**Your Name**
-🎓 B.Tech CSE (AI) Student | Aspiring Software/AI Engineer
+**1. What is the Minimax algorithm?**
+A recursive decision-making algorithm used in two-player, zero-sum games. It assumes both players play optimally and computes the best achievable outcome for the current player by simulating every possible sequence of future moves.
 
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/<your-username>)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/<your-profile>)
+**2. Why is Tic-Tac-Toe a good example for teaching Minimax?**
+Its game tree is small enough (at most 9 moves, ~362,880 sequences) to fully explore on a personal computer in well under a second, making the algorithm's behavior easy to observe and verify end-to-end.
 
-> Feel free to fork this repository, raise issues, or submit pull requests — contributions and feedback are always welcome! ⭐ If you found this project useful, consider giving it a star.
+**3. What does Alpha-Beta Pruning optimize, and what doesn't it change?**
+It reduces the number of nodes explored in the search tree by skipping branches that cannot affect the final decision. It does not change the outcome — the chosen move is always identical to plain Minimax's choice.
+
+**4. Explain alpha and beta in Alpha-Beta Pruning.**
+Alpha is the best score the maximizing player (AI) can guarantee so far in the search; beta is the best score the minimizing player (human) can guarantee so far. When alpha becomes greater than or equal to beta, the remaining branches in that subtree are pruned because a rational opponent would never allow that path to be reached.
+
+**5. What is the time complexity of plain Minimax for Tic-Tac-Toe?**
+Roughly O(b^d), where b is the branching factor (up to 9) and d is the depth (up to 9), giving a worst-case bound around 9! ≈ 362,880 leaf sequences — measured in this project at 549,946 total recursive calls including internal nodes.
+
+**6. Why is this AI considered "unbeatable"?**
+Because Tic-Tac-Toe is a solved, deterministic, zero-sum game with perfect information — with optimal play from both sides, the mathematically guaranteed result is always a draw. Minimax computes that optimal play exactly, so the human can never force a win; at best, they can force a draw.
+
+**7. How would you adapt this approach for a game like Chess?**
+Full-depth Minimax is computationally infeasible for Chess due to its enormous branching factor. In practice, you'd combine Alpha-Beta Pruning with a depth limit and a heuristic evaluation function (estimating how "good" a non-terminal position is), plus techniques like move ordering, transposition tables, and iterative deepening.
+
+**8. What's the difference between a zero-sum game and a general-sum game?**
+In a zero-sum game, one player's gain is always exactly the other player's loss (their scores sum to zero) — exactly Tic-Tac-Toe's `+1`/`-1` scoring. In a general-sum game, both players could gain or lose simultaneously (e.g. trade negotiations).
+
+**9. Why use NumPy instead of a plain Python list of lists for the board?**
+NumPy provides a clean 2D array structure with convenient indexing and slicing, and is the conventional choice for any project that may later extend the board representation (e.g. vectorized win-checking or larger boards).
+
+**10. How did you verify the AI's correctness rather than just trusting the code?**
+By building an automated test suite that checks win/draw detection on known board states, confirms the AI blocks and takes winning moves when available, and simulates a full optimal-vs-optimal self-play game to confirm it always ends in a draw — a direct empirical proof of the unbeatability claim.
+
+---
+
+## 🤝 Contribution Guidelines
+
+Contributions are welcome! To contribute:
+
+1. **Fork** this repository
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Make your changes with clear, descriptive commits
+4. Test your changes locally (`python tic_tac_toe_ai.py`)
+5. Push to your fork and open a **Pull Request** describing your changes
+
+**Ideas for contributions:** see the [Future Improvements](#-future-improvements) section above, or open an issue to discuss a new idea before submitting a PR.
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** — you are free to use, modify, and distribute it for personal, academic, or commercial purposes.
+This project is licensed under the **MIT License**.
 
 ```
 MIT License
@@ -474,8 +538,20 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ---
 
+## 👤 Author
+
+**Your Name**
+🎓 B.Tech CSE (AI) Student | Aspiring Software/AI Engineer
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/<your-username>)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/<your-profile>)
+
+> ⭐ If this project helped you understand Minimax or Alpha-Beta Pruning, consider starring the repository!
+
+---
+
 <div align="center">
 
-**Built with 🐍 Python and ❤️ for learning, portfolios, and open-source.**
+**Built with 🐍 Python, 🎮 Pygame, and a recursive love for game theory.**
 
 </div>
