@@ -16,42 +16,6 @@
 </div>
 
 ---
-
-## 📚 Table of Contents
-
-1. [Introduction](#-introduction)
-2. [Project Overview](#-project-overview)
-3. [Problem Statement](#-problem-statement)
-4. [Objectives](#-objectives)
-5. [Features](#-features)
-6. [Technologies Used](#-technologies-used)
-7. [Algorithms Used](#-algorithms-used)
-8. [Minimax Algorithm Explanation](#-minimax-algorithm-explanation)
-9. [Alpha-Beta Pruning Explanation](#-alpha-beta-pruning-explanation)
-10. [Game Theory Concepts](#-game-theory-concepts)
-11. [Project Architecture Diagram](#-project-architecture-diagram)
-12. [Folder Structure](#-folder-structure)
-13. [Installation Guide](#-installation-guide)
-14. [Requirements](#-requirements)
-15. [How to Run](#-how-to-run)
-16. [Screenshots](#-screenshots)
-17. [Gameplay Walkthrough](#-gameplay-walkthrough)
-18. [Example AI Decision Process](#-example-ai-decision-process)
-19. [Performance Analysis](#-performance-analysis)
-20. [Future Improvements](#-future-improvements)
-21. [Learning Outcomes](#-learning-outcomes)
-22. [Applications](#-applications)
-23. [Advantages](#-advantages)
-24. [Limitations](#-limitations)
-25. [Resume Project Description](#-resume-project-description)
-26. [ATS-Friendly Resume Bullet Points](#-ats-friendly-resume-bullet-points)
-27. [Interview Questions and Answers](#-interview-questions-and-answers)
-28. [Contribution Guidelines](#-contribution-guidelines)
-29. [License](#-license)
-30. [Author](#-author)
-
----
-
 ## 🧩 Introduction
 
 Tic-Tac-Toe is the smallest possible "solved" game in artificial intelligence — every outcome can be computed in advance, which makes it the perfect playground for learning **adversarial search**, the family of algorithms that power decision-making in chess engines, poker bots, and strategy-game AI.
@@ -257,34 +221,9 @@ tic-tac-toe-ai-minimax/
 ├── tic_tac_toe_ai.py      # 🎮 Complete game: GUI, rules, AI engine
 ├── requirements.txt        # 📦 Pygame + NumPy dependencies
 ├── README.md                # 📘 You are here
-└── screenshots/              # 🖼️ Gameplay screenshots for documentation
 ```
 
-> This project is intentionally implemented as a single, well-organized file for clarity and portability — every function is documented and grouped by responsibility (drawing, game state, AI engine, main loop).
-
----
-
-## ⚙️ Installation Guide
-
-### Step 1 — Clone the Repository
-
-```bash
-git clone https://github.com/<your-username>/tic-tac-toe-ai-minimax.git
-cd tic-tac-toe-ai-minimax
-```
-
-### Step 2 — Create a Virtual Environment (recommended)
-
-```bash
-python -m venv venv
-source venv/bin/activate      # On Windows: venv\Scripts\activate
-```
-
-### Step 3 — Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
+> This project is intentionally implemented as a single, well-organized file for clarity and portability — every function is documented and grouped by responsibility (drawing, game state, AI engine, main loop)
 
 ---
 
@@ -319,22 +258,6 @@ python tic_tac_toe_ai.py
 | `2` | Set difficulty to **Medium** |
 | `3` | Set difficulty to **Hard** (unbeatable) |
 | `R` | Restart the current round (scoreboard is preserved) |
-
----
-
-## 🖼️ Screenshots
-
-> Add your own gameplay captures to the `screenshots/` folder and reference them below.
-
-| In Progress | AI Wins (Hard) | Draw |
-|---|---|---|
-| `screenshots/gameplay_easy.png` | `screenshots/gameplay_hard_unbeatable.png` | `screenshots/draw_result.png` |
-
-```markdown
-![Gameplay](screenshots/gameplay_easy.png)
-![Unbeatable AI](screenshots/gameplay_hard_unbeatable.png)
-![Draw Result](screenshots/draw_result.png)
-```
 
 ---
 
@@ -446,112 +369,6 @@ The exact same Minimax + Alpha-Beta approach used here scales conceptually to:
 - The current implementation **recomputes the full search tree on every AI move** rather than caching/reusing previous computations (no transposition table)
 - The GUI is intentionally minimal — no animations, sound, or networked multiplayer
 - Medium difficulty's "50% random" model is a simple heuristic, not a calibrated skill curve
-
----
-
-## 📄 Resume Project Description
-
-> Designed and implemented an unbeatable Tic-Tac-Toe AI in Python using the Minimax algorithm with Alpha-Beta Pruning, achieving a 96.7% reduction in search-tree nodes evaluated and a ~28x performance improvement over brute-force search, while building a fully interactive Pygame GUI with difficulty scaling, live scoreboard tracking, and win-condition visualization.
-
----
-
-## 🎯 ATS-Friendly Resume Bullet Points
-
-- Developed a fully functional **Tic-Tac-Toe AI** in **Python** using the **Minimax algorithm**, implementing adversarial game-tree search to guarantee an optimal (unbeatable) decision at every turn.
-- Optimized the AI's decision-making engine with **Alpha-Beta Pruning**, reducing search-tree nodes evaluated by **96.7%** and improving move computation speed by approximately **28x**, verified through custom benchmarking.
-- Built an interactive **GUI application using Pygame**, including real-time rendering, mouse-based input handling, a persistent scoreboard system, and dynamic difficulty levels (Easy/Medium/Hard).
-- Designed and executed an **automated self-play test suite** proving algorithmic correctness, including verification that two optimal players always reach a draw — consistent with established **game theory** principles.
-- Applied **NumPy** for efficient 2D game-state representation and manipulation within a recursive search algorithm.
-
----
-
-## 💼 Interview Questions and Answers
-
-**1. What is the Minimax algorithm?**
-A recursive decision-making algorithm used in two-player, zero-sum games. It assumes both players play optimally and computes the best achievable outcome for the current player by simulating every possible sequence of future moves.
-
-**2. Why is Tic-Tac-Toe a good example for teaching Minimax?**
-Its game tree is small enough (at most 9 moves, ~362,880 sequences) to fully explore on a personal computer in well under a second, making the algorithm's behavior easy to observe and verify end-to-end.
-
-**3. What does Alpha-Beta Pruning optimize, and what doesn't it change?**
-It reduces the number of nodes explored in the search tree by skipping branches that cannot affect the final decision. It does not change the outcome — the chosen move is always identical to plain Minimax's choice.
-
-**4. Explain alpha and beta in Alpha-Beta Pruning.**
-Alpha is the best score the maximizing player (AI) can guarantee so far in the search; beta is the best score the minimizing player (human) can guarantee so far. When alpha becomes greater than or equal to beta, the remaining branches in that subtree are pruned because a rational opponent would never allow that path to be reached.
-
-**5. What is the time complexity of plain Minimax for Tic-Tac-Toe?**
-Roughly O(b^d), where b is the branching factor (up to 9) and d is the depth (up to 9), giving a worst-case bound around 9! ≈ 362,880 leaf sequences — measured in this project at 549,946 total recursive calls including internal nodes.
-
-**6. Why is this AI considered "unbeatable"?**
-Because Tic-Tac-Toe is a solved, deterministic, zero-sum game with perfect information — with optimal play from both sides, the mathematically guaranteed result is always a draw. Minimax computes that optimal play exactly, so the human can never force a win; at best, they can force a draw.
-
-**7. How would you adapt this approach for a game like Chess?**
-Full-depth Minimax is computationally infeasible for Chess due to its enormous branching factor. In practice, you'd combine Alpha-Beta Pruning with a depth limit and a heuristic evaluation function (estimating how "good" a non-terminal position is), plus techniques like move ordering, transposition tables, and iterative deepening.
-
-**8. What's the difference between a zero-sum game and a general-sum game?**
-In a zero-sum game, one player's gain is always exactly the other player's loss (their scores sum to zero) — exactly Tic-Tac-Toe's `+1`/`-1` scoring. In a general-sum game, both players could gain or lose simultaneously (e.g. trade negotiations).
-
-**9. Why use NumPy instead of a plain Python list of lists for the board?**
-NumPy provides a clean 2D array structure with convenient indexing and slicing, and is the conventional choice for any project that may later extend the board representation (e.g. vectorized win-checking or larger boards).
-
-**10. How did you verify the AI's correctness rather than just trusting the code?**
-By building an automated test suite that checks win/draw detection on known board states, confirms the AI blocks and takes winning moves when available, and simulates a full optimal-vs-optimal self-play game to confirm it always ends in a draw — a direct empirical proof of the unbeatability claim.
-
----
-
-## 🤝 Contribution Guidelines
-
-Contributions are welcome! To contribute:
-
-1. **Fork** this repository
-2. Create a feature branch: `git checkout -b feature/your-feature-name`
-3. Make your changes with clear, descriptive commits
-4. Test your changes locally (`python tic_tac_toe_ai.py`)
-5. Push to your fork and open a **Pull Request** describing your changes
-
-**Ideas for contributions:** see the [Future Improvements](#-future-improvements) section above, or open an issue to discuss a new idea before submitting a PR.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
-```
-MIT License
-
-Copyright (c) 2026 <Your Name>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-```
-
----
-
-## 👤 Author
-
-**Your Name**
-🎓 B.Tech CSE (AI) Student | Aspiring Software/AI Engineer
-
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/<your-username>)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/<your-profile>)
-
-> ⭐ If this project helped you understand Minimax or Alpha-Beta Pruning, consider starring the repository!
-
 ---
 
 <div align="center">
-
-**Built with 🐍 Python, 🎮 Pygame, and a recursive love for game theory.**
-
-</div>
