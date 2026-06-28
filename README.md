@@ -24,7 +24,6 @@
 This project is intentionally engineered to be **transparent and explainable**: every decision the chatbot makes can be traced back to a specific, human-readable rule. It serves as both a practical conversational tool and an educational reference implementation of how early-generation chatbots (e.g. ELIZA-style systems) and many production rule engines and FAQ bots still operate today.
 
 > 💡 **In one sentence:** A chatbot that listens for keywords in your message and replies using carefully designed rules — built with two interchangeable interfaces (Console + GUI) sharing one decision-making core.
-
 ---
 
 ## 📝 Project Description
